@@ -14,9 +14,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
         java: [11, 17]
-
+        
     steps:
       - uses: actions/checkout@v3
 
@@ -25,15 +25,14 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
-
+          
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+          
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: 7.6
-
-      - name: Make gradlew executable
-        if: runner.os != 'Windows'
-        run: chmod +x ./gradlew
-
+          arguments: build
+            
       - name: Run tests
         run: ./gradlew test
