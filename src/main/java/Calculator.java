@@ -1,26 +1,55 @@
+/**
+ * Simple calculator class for basic arithmetic operations
+ */
 public class Calculator {
+
+    /**
+     * Adds two numbers
+     *
+     * @param a first number
+     * @param b second number
+     */
     public int add(int a, int b) {
         return a + b;
     }
 
+    /**
+     * Subtracts two numbers
+     *
+     * @param a first number
+     * @param b second number
+     */
     public int dif(int a, int b) {
         return a - b;
     }
 
+    /**
+     * Divides two numbers
+     *
+     * @param a first number
+     * @param b second number
+     */
     public int div(int a, int b) {
-        if (b == 0) {
-            return 0;
-        } else {
-            return a / b;
-        }
+        return a / b;
     }
 
+    /**
+     * Multiplies two numbers
+     *
+     * @param a first number
+     * @param b second number
+     */
     public int times(int a, int b) {
         return a * b;
     }
 
-    public int solver(int a, int b, int c, int d) {
-        //My equation: ((a * b) - (a + c)) / d
-        return div(dif(times(a, b), add(a, c)), d);
+    /**
+     * Calculates a^2 + b^2
+     *
+     * @param a first number
+     * @param b second number
+     */
+    public int solver(int a, int b) {
+        return add(times(a, a), times(b, b));
     }
 }
